@@ -10,6 +10,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.route('/name').get((req, res) => {
+    res.json({"name": `${req.query.first} ${req.query.last}`});
+});
+
 app.get("/:word/echo", (req, res) => {
     res.json({"echo": req.params.word});
 });
