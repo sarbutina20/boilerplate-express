@@ -2,14 +2,11 @@ let express = require('express');
 let app = express();
 const bodyParser = require('body-parser');
 
-console.log('Hello World');
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/public', express.static(__dirname + '/public'));
 
-app.use((req, res, next) => {
-    bodyParser.urlencoded({extended: false})
-    next();
-});
+
 
 app.route('/name').get((req, res) => {
     res.json({"name": `${req.query.first} ${req.query.last}`});
